@@ -18,8 +18,11 @@ def main() -> None:
     os.makedirs(out_dir, exist_ok=True)
     text = EXCUSE.strip()
     assert 1 <= len(text) <= 200, f"entry must be 1-200 chars, got {len(text)}"
-    with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
+    path = os.path.join(out_dir, "entry.txt")
+    with open(path, "w", encoding="utf-8") as f:
         f.write(text)
+    # Echo the entry so a local run shows exactly what the judge will read.
+    print(f"{text} ({len(text)} chars -> {path})")
 
 
 if __name__ == "__main__":
